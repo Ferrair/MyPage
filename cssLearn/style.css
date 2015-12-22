@@ -1,0 +1,17 @@
+/*这样定义样式作用域为全局的*/
+body {
+    color: gold;
+}
+
+/*子类可以直接覆盖父类的属性*/
+h3 {
+    color: green;
+    font-family: Consolas;
+    text-align: center; /*设置字体再浏览器的位置*/
+}
+
+.mFirstClass {
+    color: blue;
+    font-family: Consolas;
+    text-align: center; /*设置字体在浏览器的位置*/
+}
