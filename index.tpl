@@ -47,27 +47,10 @@ Author URL: http://wangqihang.cn
 
     <!-- checkInput-->
     <script type="text/javascript">
-        function validate_form(thisForm) {
+        function checkInput(thisForm) {
             with (thisForm) {
-                if (validate_required(mailName, "为什么不告诉我你是谁!") == false) {
-                    mailName.focus();
-                    return false;
-                }
-                if (validate_required(mailAddress, "请吧邮箱地址给我吧,好和你联系哦") == false) {
-                    mailAddress.focus();
-                    return false;
-                }
-                //这里要判断邮箱输入是否合法
-                if (isEmail()) {
-                    mailAddress.focus();
-                    alert("Mail Invalid");
-                    return false;
-                }
-                if (validate_required(mailSubject, "你的建议") == false) {
-                    mailSubject.focus();
-                    return false;
-                }
-                return true;
+                var mCheck = new CheckInput();
+                return mCheck.isEmpty(mailName, "为什么不告诉我你是谁!") && mCheck.isEmpty(mailAddress, "请吧邮箱地址给我吧,好和你联系哦") && mCheck.isEmpty(mailSubject, "你的建议") && mCheck.isEmail(mailAddress, '非法的邮箱地址');
             }
         }
     </script>
@@ -351,7 +334,7 @@ Author URL: http://wangqihang.cn
             <div class="col-md-7 contact-right">
                 <h3>帮助启航改进该网站</h3>
                 <div class="horizontalLine"></div>
-                <form action="sendMail/sendMailToMe.php" method="post" onsubmit="return validate_form(this)">
+                <form action="sendMail/sendMailToMe.php" method="post" onsubmit="return checkInput(this)">
                     <input name="mailName" type="text" placeholder="Name">
                     <input name="mailAddress" type="text" placeholder="Your E-mail">
                     <textarea name="mailSubject" type="text" placeholder="Your Suggestion"></textarea>
@@ -368,24 +351,14 @@ Author URL: http://wangqihang.cn
 <!--footer 底部的文字-->
 <div class="footer">
     <div class="container">
-        <p>Copyright &copy; 2015 Ferrair by <a href="#">Home</a></p>
+        <p>Copyright &copy; 2015 Ferrair.<a href="https://github.com/Ferrair/MyPage">Fork me</a></p>
     </div>
 </div>
 
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
     $(document).ready(function () {
-        /*
-         var defaults = {
-         containerID: 'toTop', // fading element id
-         containerHoverID: 'toTopHover', // fading element hover id
-         scrollSpeed: 1200,
-         easingType: 'linear'
-         };
-         */
-
         $().UItoTop({easingType: 'easeOutQuart'});
-
     });
 </script>
 <!-- //here ends scrolling icon -->

@@ -10,7 +10,6 @@ require_once 'database/TravelDB.php';
 
 include_once 'smarty/config.php';
 
-//Git for windows
 //如果已有缓存 就不需要 操作数据库
 if (!$smarty->isCached('index.tpl')) {
     readDatabase($smarty);

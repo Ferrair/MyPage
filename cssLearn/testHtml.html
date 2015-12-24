@@ -1,18 +1,37 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-    <meta charset = "UTF-8">
+    <meta charset="UTF-8">
     <title>Title</title>
-    <link href = "style.css" rel = "stylesheet" type = "text/css" media = "all"/>
+    <link href="style.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //jQuery选择器
+            //对 class = mFirstClass所有元素进行操作
+            $(".mFirstClass").hide();
+            //对 id = mFirstId所有元素进行操作
+            $("#mFirstId").mouseover(function () {
+                        $("#mFirstId").hide();
+                    }
+            );
+        });
+    </script>
 </head>
 <body>
-<div id = "mFirst" class = "mFirstClass">
+
+<div class="mFirstClass">
     In div mFirstClass
 </div>
+
+<div id="mFirstId">
+    In div mFirstId
+</div>
+
 <h3>In h3</h3>
 In html
 
 <!--在这里也可以对style.css里面的样式进行修改-->
-<h3 style = "text-align: left;color: #aa0000">In Override h3</h3>
+<h3 style="text-align: left;color: #aa0000">In Override h3</h3>
 </body>
 </html>

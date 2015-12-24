@@ -5,21 +5,10 @@
     <title>添加朋友</title>
     <script type="text/javascript" src="../js/checkInput.js"></script>
     <script type="text/javascript">
-        function validate_form(thisForm) {
+        function checkInput(thisForm) {
             with (thisForm) {
-                if (validate_required(mName, "为什么不告诉我你是谁!") == false) {
-                    //得到焦点
-                    mName.focus();
-                    return false
-                }
-                if (validate_required(mRelation, "不填关系就是我的儿子咯") == false) {
-                    mRelation.focus();
-                    return false
-                }
-                if (validate_required(mFile, "爆照啊 哥哥姐姐") == false) {
-                    mFile.focus();
-                    return false
-                }
+                var mCheck = new CheckInput();
+                return mCheck.isEmpty(mName, "为什么不告诉我你是谁!") && mCheck.isEmpty(mRelation, "不填关系就是我的儿子咯") && mCheck.isEmpty(mFile, "爆照啊 哥哥姐姐");
             }
         }
     </script>
@@ -28,7 +17,7 @@
 <div class="">
     <h3>在下面添加你的信息哦</h3>
     <div class="horizontalLine"></div>
-    <form action="addFriends.php" method="post" onsubmit="return validate_form(this)"
+    <form action="addFriends.php" method="post" onsubmit="return checkInput(this)"
           enctype="multipart/form-data">
         <input name="mName" type="text" placeholder="姓名">
         <input name="mRelation" type="text" placeholder="你是我的什么">
