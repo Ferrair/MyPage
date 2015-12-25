@@ -1,28 +1,27 @@
 <!--
 Author: Ferrair
 Author URL: http://wangqihang.cn
--->
-<{*
+
 1.$blogArray自己博客的二维数组
 2.$friendsArray 朋友的二维数组
 3.$travleArray 旅游照片的二维数组
-*}>
+-->
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>王启航</title>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet'
-          type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic'
-          rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/swipebox.css">
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="启航"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
         function hideURLbar() {
@@ -30,31 +29,72 @@ Author URL: http://wangqihang.cn
         } </script>
     <!-- //for-mobile-apps -->
 
+    <script src="js/jquery.swipebox.min.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script src="js/classie.js"></script>
+
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/checkInput.js"></script>
-    <!-- start-smooth-scrolling -->
     <script type="text/javascript" src="js/move-top.js"></script>
     <script type="text/javascript" src="js/easing.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function ($) {
+        var $ = jQuery.noConflict(); //jQuery用 $代替jQuery 这句代码防止冲突
+        //点击菜单每一项跳转到相应布局
+        $(document).ready(function () {
             $(".scroll").click(function (event) {
                 event.preventDefault();
                 $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+                $('#box').animate({'top': '-1000px'}, 100);
+            });
+        });
+        //打开或关闭菜单
+        $(function () {
+            $('#openSettingBtn').click(function () {
+                $('#box').animate({'top': '0px'}, 300);
+            });
+            $('#closeSettingBtn').click(function () {
+                $('#box').animate({'top': '-1000px'}, 900);
             });
         });
     </script>
-    <!-- start-smooth-scrolling -->
-
-    <!-- checkInput-->
     <script type="text/javascript">
+        //验证表单输入
         function checkInput(thisForm) {
             with (thisForm) {
                 var mCheck = new CheckInput();
-                return mCheck.isEmpty(mailName, "为什么不告诉我你是谁!") && mCheck.isEmpty(mailAddress, "请吧邮箱地址给我吧,好和你联系哦") && mCheck.isEmpty(mailSubject, "你的建议") && mCheck.isEmail(mailAddress, '非法的邮箱地址');
+                return mCheck.isEmpty(mailName, "为什么不告诉我你是谁!😔") && mCheck.isEmpty(mailAddress, "请吧邮箱地址给我吧,好和你联系哦💔") && mCheck.isEmpty(mailSubject, "你的建议") && mCheck.isEmail(mailAddress, '你骗我😂,这不是邮箱');
             }
         }
     </script>
-    <!-- /checkInput-->
+    <script type="text/javascript">
+        //回到顶部
+        $(document).ready(function () {
+            $().UItoTop({easingType: 'easeOutQuart'});
+        });
+    </script>
+    <script type="text/javascript">
+        //朋友 lightBox
+        jQuery(function ($) {
+            $(".swipebox").swipebox();
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#slider3").responsiveSlides({
+                auto: true,
+                pager: false,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -62,14 +102,10 @@ Author URL: http://wangqihang.cn
 <div class="banner" id="home">
     <div class="container">
         <div class="top-header row">
-            <script src="js/classie.js"></script>
             <!--top-nav---->
-            <div class="logo">
-                <a href="#"><img src="" alt=""/></a>
-            </div>
             <div class="top-nav">
                 <div class="nav-icon">
-                    <a href="#" class="right_bt" id="activator"><span> </span> </a>
+                    <a href="#" class="right_bt" id="openSettingBtn"><span> </span> </a>
                 </div>
                 <div class="box" id="box">
                     <div class="box_content">
@@ -83,40 +119,14 @@ Author URL: http://wangqihang.cn
                                         <li><a class="scroll" href="#friends"><span>好朋友</span></a></li>
                                         <li><a class="scroll" href="#blog"><span>博客</span></a></li>
                                         <li><a class="scroll" href="#contact"><span>联系我</span></a></li>
-                                        <div class="clearfix"></div>
                                     </ul>
                                 </div>
-                                <a class="boxclose" id="boxclose"> <span> </span></a>
+                                <a class="boxclose" id="closeSettingBtn"> <span> </span></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!---start-click-drop-down-menu-->
-            <!--start-dropdown-->
-            <script type="text/javascript">
-                var $ = jQuery.noConflict();
-                $(function () {
-                    $('#activator').click(function () {
-                        $('#box').animate({'top': '0px'}, 900);
-                    });
-                    $('#boxclose').click(function () {
-                        $('#box').animate({'top': '-1000px'}, 900);
-                    });
-                });
-                $(document).ready(function () {
-                    //Hide (Collapse) the toggle containers on load
-                    $(".toggle_container").hide();
-                    //Switch the "Open" and "Close" state per click then slide up/down (depending on open/close state)
-                    $(".trigger").click(function () {
-                        $(this).toggleClass("active").next().slideToggle("slow");
-                        return false; //Prevent the browser jump to the link anchor
-                    });
-
-                });
-            </script>
-            <!---//End-click-drop-down-menu-->
-            <div class="clearfix"></div>
         </div>
         <div class="banner-info">
             <div class="banner-left">
@@ -128,11 +138,10 @@ Author URL: http://wangqihang.cn
                 <div class="border"></div>
                 <h3>Stay Hunger,Stay Foolish.</h3>
             </div>
-            <div class="clearfix"></div>
+
         </div>
     </div>
 </div>
-<!---/banner-->
 <!--about 关于我-->
 <div class="about text-center" id="about">
     <div class="container">
@@ -174,7 +183,6 @@ Author URL: http://wangqihang.cn
         </div>
     </div>
 </div>
-<!--product-->
 
 <!--blog 我的博客-->
 <div class="blog" id="blog">
@@ -193,7 +201,6 @@ Author URL: http://wangqihang.cn
 
                         <div class="blog-text">
                             <a href="<{$blogItem->guid}>"><{$blogItem->post_title}></a>
-
                             <div class="horizontalLine"></div>
                             <p><{$blogItem->post_content|mb_substr:0:40:'UTF-8'}>...</p>
                         </div>
@@ -210,11 +217,9 @@ Author URL: http://wangqihang.cn
                     </div>
                 </div>
             <{/foreach}>
-            <div class="clearfix"></div>
         </div>
     </div>
 </div>
-<!--//blog-->
 
 <!--friends 这里介绍自己的朋友-->
 <div class="testimonials" id="friends">
@@ -222,24 +227,6 @@ Author URL: http://wangqihang.cn
         <h3>朋友一生一起走</h3>
 
         <div class="strip text-center"><img src="images/test.png" alt=" "/></div>
-        <script src="js/responsiveslides.min.js"></script>
-        <script>
-            $(function () {
-                $("#slider3").responsiveSlides({
-                    auto: true,
-                    pager: false,
-                    nav: true,
-                    speed: 500,
-                    namespace: "callbacks",
-                    before: function () {
-                        $('.events').append("<li>before event fired.</li>");
-                    },
-                    after: function () {
-                        $('.events').append("<li>after event fired.</li>");
-                    }
-                });
-            });
-        </script>
 
         <div id="top" class="callbacks_container">
             <ul class="rslides" id="slider3">
@@ -249,8 +236,7 @@ Author URL: http://wangqihang.cn
                             <img class="quoa" src="images/quo2.png" alt=""/>
 
                             <div class="test-left">
-                                <a href="friends/item_friends.php?id=<{$friendItem[$smarty.const.FRIEND_ID]}>">
-                                    <img
+                                <a href="friends/item_friends.php?id=<{$friendItem[$smarty.const.FRIEND_ID]}>"><img
                                             src="images/<{$friendItem[$smarty.const.FRIEND_IMAGE]}>"
                                             alt="Friend Image"/></a>
                             </div>
@@ -261,7 +247,6 @@ Author URL: http://wangqihang.cn
 
                                 <p><{$friendItem[$smarty.const.FRIEND_SIGN]|default:'这个人很拘束，什么都没有留下'}></p>
                             </div>
-                            <div class="clearfix"></div>
                             <img class="quo" src="images/quo1.png" alt=""/>
                         </div>
                     </li>
@@ -270,7 +255,6 @@ Author URL: http://wangqihang.cn
         </div>
     </div>
 </div>
-<!--friends-->
 
 <!--travel 我的足迹-->
 <div class="gallery-section text-center" id="travel">
@@ -283,10 +267,7 @@ Author URL: http://wangqihang.cn
                 <{foreach $travelArray as $travelItem}>
                     <div class="col-md-4 gallery-grid gallery1">
                         <a href="images/<{$travelItem['imageUrl']}>" class="swipebox"><img
-                                    src="images/<{$travelItem['imageUrl']}>"
-                                    class="img-responsive"
-                                    alt="/">
-
+                                    src="images/<{$travelItem['imageUrl']}>" class="img-responsive" alt="/">
                             <div class="textbox">
                                 <h4><{$travelItem['name']|default:"旅游照片"}></h4>
                                 <p><{$travelItem['description']|default:"照的还不错吧"}></p>
@@ -296,19 +277,10 @@ Author URL: http://wangqihang.cn
                         </a>
                     </div>
                 <{/foreach}>
-                <div class="clearfix"></div>
             </div>
-            <link rel="stylesheet" href="css/swipebox.css">
-            <script src="js/jquery.swipebox.min.js"></script>
-            <script type="text/javascript">
-                jQuery(function ($) {
-                    $(".swipebox").swipebox();
-                });
-            </script>
         </div>
     </div>
 </div>
-<!--travel-->
 
 <!--contact 联系我-->
 <div class="contact" id="contact">
@@ -341,26 +313,16 @@ Author URL: http://wangqihang.cn
                     <input type="submit" value="给我留言">
                 </form>
             </div>
-            <div class="clearfix"></div>
         </div>
     </div>
 </div>
-<!--//contact-->
-<div class="footer-top"></div>
 
-<!--footer 底部的文字-->
+<!--footer 底部文字-->
+<div class="footer-top"></div>
 <div class="footer">
     <div class="container">
         <p>Copyright &copy; 2015 Ferrair.<a href="https://github.com/Ferrair/MyPage">Fork me</a></p>
     </div>
 </div>
-
-<!-- here stars scrolling icon -->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $().UItoTop({easingType: 'easeOutQuart'});
-    });
-</script>
-<!-- //here ends scrolling icon -->
 </body>
 </html>
