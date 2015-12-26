@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    font-family: Consolas, serif;
+}
+
+ul li {
+    list-style-type: none
+}
+
+a {
+    cursor: pointer;
+}
+
+.outer-wrap {
+    width: 100%;
+}
+
+.inner-wrap {
+    width: 1024px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.menu-wrap {
+    height: 85px;
+    background: #333b46;
+    color: #ffffff;
+    position: relative;
+}
+
+.menu-wrap .logo {
+    display: inline-block;
+    width: 59px;
+    height: 59px;
+    margin: 10px 0 0 0;
+    float: left;
+    background: url("");
+}
+
+.menu-wrap .logo-text {
+    display: inline-block;
+    height: 59px;
+    line-height: 59px;
+    margin: 10px 0 0 10px;
+    float: left;
+    font-size: 24px;
+    font-family: Consolas, serif;
+}
+
+.main-content-wrap {
+    height: 710px;
+    background: #3c4552;
+}
+
+.main-content .main-content-left {
+    width: 228px;
+    margin: 90px 0 0 120px;
+    float: left;
+    position: relative;
+}
+
+/*二维码背景*/
+.main-content .main-content-left .demo-code-background {
+    height: 314px;
+    width: 228px;
+    background: url("http://eatting.bmob.cn/images/demo-code-background.png") no-repeat;
+}
+
+.main-content .main-content-left .demo-code-background .demo-code-img {
+    display: block;
+    padding: 35px 0 0 0;
+    margin: 0 0 0 15px;
+}
+
+.main-content .main-content-left .demo-code-background .demo-code-text {
+    text-align: center;
+    font-size: 12px;
+    color: #9fa0a0;
+    line-height: 20px;
+    margin: 10px 0 0 0;
+}
+
+.main-content .main-content-left .download-app {
+    margin: 70px 0 0 0;
+    position: relative;
+}
+
+.main-content .main-content-left .download-app ul li a {
+    display: block;
+    width: 178px;
+    height: 59px;
+    margin: 30px auto 0;
+}
+
+.main-content .main-content-left .download-app ul li .download-android {
+    background: url("http://eatting.bmob.cn/images/download-android.png") no-repeat;
+}
+
+.main-content .main-content-left .download-app ul li .download-android:hover {
+    background: url("http://eatting.bmob.cn/images/download-android-hover.png") no-repeat;
+}
+
+.main-content .main-content-right {
+    position: relative;
+    float: right;
+    margin: 40px 100px 0 0;
+}
+
+/*.main-content .main-content-right .iphone-background {
+    width: 338px;
+    height: 663px;
+    overflow: hidden;
+    float: left;
+    background: url("http://eatting.bmob.cn/images/iphone.png") no-repeat;
+}*/
+
+.main-content .main-content-right .android-background {
+    width: 350px;
+    height: 663px;
+    overflow: hidden;
+    float: left;
+    background: url("http://eatting.bmob.cn/images/android.png") no-repeat;
+}
+
+.main-content .main-content-right .android-background .android-inner-img {
+    float: left;
+    margin: 80px 0 0 45px;
+    overflow: hidden;
+}
+
+.footer-wrap {
+    height: 95px;
+    background: #333b46;
+    color: #4d5662;
+}
+
+.footer-wrap .footer {
+    text-align: center;
+}
+
+.footer-wrap .footer p {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px 0 0 0;
+}

@@ -11,28 +11,19 @@ Author URL: http://wangqihang.cn
 <html>
 <head>
     <title>王启航</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="启航"/>
+
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" href="css/swipebox.css">
-    <!-- for-mobile-apps -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="启航"/>
-    <script type="application/x-javascript">
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        } </script>
-    <!-- //for-mobile-apps -->
+    <link href="css/swipebox.css" rel="stylesheet" type="text/css" media="all">
 
     <script src="js/jquery.swipebox.min.js"></script>
     <script src="js/responsiveslides.min.js"></script>
     <script src="js/classie.js"></script>
-
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/checkInput.js"></script>
     <script type="text/javascript" src="js/move-top.js"></script>
@@ -67,31 +58,26 @@ Author URL: http://wangqihang.cn
         }
     </script>
     <script type="text/javascript">
-        //回到顶部
+        //回到顶部 plugin
         $(document).ready(function () {
             $().UItoTop({easingType: 'easeOutQuart'});
         });
     </script>
     <script type="text/javascript">
-        //朋友 lightBox
+        //朋友 lightBox plugin
         jQuery(function ($) {
             $(".swipebox").swipebox();
         });
     </script>
     <script type="text/javascript">
+        //ResponsiveSlides plugin
         $(function () {
             $("#slider3").responsiveSlides({
                 auto: true,
                 pager: false,
                 nav: true,
                 speed: 500,
-                namespace: "callbacks",
-                before: function () {
-                    $('.events').append("<li>before event fired.</li>");
-                },
-                after: function () {
-                    $('.events').append("<li>after event fired.</li>");
-                }
+                namespace: "wqh"
             });
         });
     </script>
