@@ -21,15 +21,16 @@ function readDatabase(Smarty $smarty)
 {
     //Blog
     $smarty->assign("blogArray", PostTable::fetchPostTable('-comment_count'));
+
     //Friends
-    $friendsArray = FriendsDB::newInstance();
+    $friendsArray = FriendsDB::newInstance(FriendsDB::TABLE_NAME);
     $smarty->assign("friendsArray", $friendsArray->fetchData());
 
     //Products
-    $productsArray = ProductsDB::newInstance();
+    $productsArray = ProductsDB::newInstance(ProductsDB::TABLE_NAME);
     $smarty->assign("productsArray", $productsArray->fetchData(3));
 
     //Travel
-    $travelArray = TravelDB::newInstance();
+    $travelArray = TravelDB::newInstance(TravelDB::TABLE_NAME);
     $smarty->assign("travelArray", $travelArray->fetchData(6));
 }

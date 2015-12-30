@@ -14,7 +14,7 @@ require_once '../smarty/config.php';
 $smarty->clearCache('index.tpl');
 
 list($mName, $mRelation, $mSignature, $fileName) = handleInput();
-$mFriendDB = FriendsDB::newInstance();
+$mFriendDB = FriendsDB::newInstance(FriendsDB::TABLE_NAME);
 
 PhotoThumb::generateThumb('../images/' . $fileName, '../images/' . PhotoThumb::AFTER . $fileName);
 

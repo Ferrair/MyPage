@@ -11,19 +11,6 @@ require_once 'DBAbs.php';
 class FriendsDB extends DBAbs
 {
     const TABLE_NAME = 'friends';
-    private static $instance;
-
-    protected function __construct($tableName)
-    {
-        parent::__construct($tableName);
-    }
-
-    public static function newInstance()
-    {
-        if (!self::$instance instanceof self)
-            self::$instance = new FriendsDB(self::TABLE_NAME);
-        return self::$instance;
-    }
 
     /**
      * @param string $name :朋友的姓名
@@ -34,10 +21,10 @@ class FriendsDB extends DBAbs
      */
     public function saveData($name, $relation, $signature, $photoName)
     {
-        $this->pdo->beginTransaction();
-        $stem = $this->pdo->prepare("INSERT INTO $this->tableName VALUES (NULL,?,?,?,?);");
+        parent::$pdo->beginTransaction();
+        $stem = parent::$pdo->prepare("INSERT INTO $this->tableName VALUES (NULL,?,?,?,?);");
         $stem->execute(array($name, $relation, $signature, $photoName));
-        if ($this->pdo->commit())
+        if (parent::$pdo->commit())
             return true;
         return false;
     }

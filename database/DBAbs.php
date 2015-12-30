@@ -10,13 +10,25 @@ require_once '/Applications/MAMP/htdocs/MyPage/config/DBConfig.php';
 
 abstract class DBAbs
 {
-    var $pdo;
-    var $tableName;
+    protected static $pdo;
+    protected $tableName;
+
+    /**
+     * late static binding @see http://php.net/manual/zh/language.oop5.late-static-bindings.php
+     * 后期静态绑定的解析会一直到取得一个完全解析了的静态调用为止。另一方面，如果静态调用使用 parent:: 或者 self:: 将转发调用信息。
+     */
+    public static function newInstance($tableName)
+    {
+        return new static($tableName);
+    }
 
     protected function __construct($tableName)
     {
+        //Debug
+        //echo "Call " . __METHOD__ . "<br>";
         try {
-            $this->pdo = new PDO(DATABASE_CONNECTION_CONFIG, DATABASE_USER_NAME, DATABASE_USER_PASSWORD);
+            if (self::$pdo == null)
+                self::$pdo = new PDO(DATABASE_CONNECTION_CONFIG, DATABASE_USER_NAME, DATABASE_USER_PASSWORD);
         } catch (PDOException $e) {
             die("Connection Failure " . $e->getMessage());
         }
@@ -25,7 +37,7 @@ abstract class DBAbs
 
     public function __destruct()
     {
-        $this->pdo = null;
+        self::$pdo = null;
     }
 
     /**
@@ -37,10 +49,10 @@ abstract class DBAbs
     {
         $sqlStr = "SELECT * FROM $this->tableName ORDER BY $order LIMIT $limit";
         //Debug
-        //$query = $this->pdo->query($sqlStr);
+        //$query = self::$pdo->query($sqlStr);
         //var_dump($query->fetchAll(PDO::FETCH_ASSOC));
 
-        $res = $this->pdo->prepare($sqlStr);
+        $res = self::$pdo->prepare($sqlStr);
         $res->execute();
         $res->setFetchMode(PDO::FETCH_LAZY);
         if ($res == null)
@@ -51,7 +63,7 @@ abstract class DBAbs
     public function fetchItemData($id)
     {
         $sqlStr = "SELECT * FROM $this->tableName WHERE id = $id";
-        $statement = $this->pdo->query($sqlStr);
+        $statement = self::$pdo->query($sqlStr);
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
     }
 }

@@ -13,7 +13,8 @@ class PostTable
 
     public static function fetchPostTable($order = 'id', $limit = 3)
     {
-        $sqlStr = "SELECT * FROM wp_posts WHERE post_status = 'publish' ORDER BY $order LIMIT $limit";
+        //只查询需要的数据
+        $sqlStr = "SELECT post_title,guid,post_content,comment_count,post_date FROM wp_posts WHERE post_status = 'publish' ORDER BY $order LIMIT $limit";
         global $wpdb;
         $result = $wpdb->get_results($sqlStr);
         if ($result != null)
