@@ -13,7 +13,7 @@ require_once '../smarty/config.php';
 $id = $_GET['id'];
 
 if (!$smarty->isCached('item_friends.tpl', $id)) {
-    $itemFriend = FriendsDB::newInstance(FriendsDB::TABLE_NAME);
+    $itemFriend = FriendsDB::newInstance();
     $smarty->assign('itemFriend', $itemFriend->fetchItemData($id));
 }
 $smarty->display('item_friends.tpl', $id);

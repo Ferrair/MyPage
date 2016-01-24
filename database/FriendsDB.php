@@ -10,7 +10,7 @@ require_once 'DBAbs.php';
 
 class FriendsDB extends DBAbs
 {
-    const TABLE_NAME = 'friends';
+    protected static $tableName = 'friends';
 
     /**
      * @param string $name :朋友的姓名
@@ -22,7 +22,7 @@ class FriendsDB extends DBAbs
     public function saveData($name, $relation, $signature, $photoName)
     {
         parent::$pdo->beginTransaction();
-        $stem = parent::$pdo->prepare("INSERT INTO $this->tableName VALUES (NULL,?,?,?,?);");
+        $stem = parent::$pdo->prepare("INSERT INTO " .static::$tableName. " VALUES (NULL,?,?,?,?);");
         $stem->execute(array($name, $relation, $signature, $photoName));
         if (parent::$pdo->commit())
             return true;

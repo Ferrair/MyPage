@@ -11,4 +11,4 @@ define('DATABASE_HOST', 'localhost');
 
 define("DATABASE_CONNECTION_CONFIG", 'mysql:host=' . DATABASE_HOST . ';dbname=' . DATABASE_NAME . ';charset=utf8');
 define('DATABASE_USER_NAME', 'root');
-define('DATABASE_USER_PASSWORD', 'root');
+define('DATABASE_USER_PASSWORD', '');

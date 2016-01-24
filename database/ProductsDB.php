@@ -10,5 +10,5 @@ require_once 'DBAbs.php';
 
 class ProductsDB extends DBAbs
 {
-    const TABLE_NAME = 'products';
+    protected static $tableName = 'products';
 }

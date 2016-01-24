@@ -40,7 +40,7 @@ function generateQRCode($itemProduct)
  */
 function readDatabase($id)
 {
-    return ProductsDB::newInstance(ProductsDB::TABLE_NAME)->fetchItemData($id);
+    return ProductsDB::newInstance()->fetchItemData($id);
 }
 
 /**

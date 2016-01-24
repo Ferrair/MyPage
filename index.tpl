@@ -3,8 +3,7 @@ Author: Ferrair
 Author URL: http://wangqihang.cn
 
 1.$blogArray自己博客的二维数组
-2.$friendsArray 朋友的二维数组
-3.$travleArray 旅游照片的二维数组
+2.$travleArray 旅游照片的二维数组
 -->
 
 <!DOCTYPE html>
@@ -21,7 +20,6 @@ Author URL: http://wangqihang.cn
     <link href="css/swipebox.css" rel="stylesheet" type="text/css" media="all">
 
     <script src="js/jquery.swipebox.min.js"></script>
-    <script src="js/responsiveslides.min.js"></script>
     <script src="js/classie.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/checkInput.js"></script>
@@ -62,24 +60,6 @@ Author URL: http://wangqihang.cn
             $().UItoTop({easingType: 'easeOutQuart'});
         });
     </script>
-    <script type="text/javascript">
-        //朋友 lightBox plugin
-        jQuery(function ($) {
-            $(".swipebox").swipebox();
-        });
-    </script>
-    <script type="text/javascript">
-        //ResponsiveSlides plugin
-        $(function () {
-            $("#slider3").responsiveSlides({
-                auto: true,
-                pager: false,
-                nav: true,
-                speed: 500,
-                namespace: "wqh"
-            });
-        });
-    </script>
 
 </head>
 <body>
@@ -101,7 +81,6 @@ Author URL: http://wangqihang.cn
                                         <li><a class="scroll" href="#home"><span>主页君</span></a></li>
                                         <li><a class="scroll" href="#services"><span>产品</span></a></li>
                                         <li><a class="scroll" href="#travel"><span>足迹</span></a></li>
-                                        <li><a class="scroll" href="#friends"><span>好朋友</span></a></li>
                                         <li><a class="scroll" href="#blog"><span>博客</span></a></li>
                                         <li><a class="scroll" href="#contact"><span>联系我</span></a></li>
                                     </ul>
@@ -115,7 +94,7 @@ Author URL: http://wangqihang.cn
         </div>
         <div class="banner-info">
             <div class="banner-left">
-                <img src="images/1.jpg" alt=""/>
+                <img src="images/avatar.jpg" alt=""/>
             </div>
             <div class="banner-right">
                 <h2>I 'M 王启航</h2>
@@ -132,7 +111,7 @@ Author URL: http://wangqihang.cn
     <div class="container">
         <h3>个人简介</h3>
 
-        <div class="strip text-center"><img src="images/about.png" alt=" "/></div>
+        <div class="strip text-center"><img src="images/about_banner.png" alt=" "/></div>
         <p>我是一名电子科技大学信息与软件工程学院的大二学生，爱技术，有理想，爱旅游，有想法。
             家住安徽宣城.
         </p>
@@ -150,7 +129,7 @@ Author URL: http://wangqihang.cn
         <div class="ser-info">
             <h3>我与我的团队做的东西</h3>
         </div>
-        <div class="strip text-center"><img src="images/ser.png" alt=" "/></div>
+        <div class="strip text-center"><img src="images/product_banner.png" alt=" "/></div>
         <div class="ser-grids">
             <{foreach $productsArray as $productItem}>
                 <div class="col-md-3 ser-grid">
@@ -175,7 +154,7 @@ Author URL: http://wangqihang.cn
         <div class="blog-info text-center">
             <h3><a href="wordpress/">博客</a></h3>
 
-            <div class="strip text-center"><img src="images/blog.png" alt=" "/></div>
+            <div class="strip text-center"><img src="images/blog_banner.png" alt=" "/></div>
         </div>
         <div class="blog-grids">
             <{*从数据库里面取出所有的Blog 并进行显示*}>
@@ -206,47 +185,12 @@ Author URL: http://wangqihang.cn
     </div>
 </div>
 
-<!--friends 这里介绍自己的朋友-->
-<div class="testimonials" id="friends">
-    <div class="container">
-        <h3>朋友一生一起走</h3>
-
-        <div class="strip text-center"><img src="images/test.png" alt=" "/></div>
-
-        <div id="top" class="callbacks_container">
-            <ul class="rslides" id="slider3">
-                <{foreach $friendsArray as $friendItem}>
-                    <li>
-                        <div class="test-banner">
-                            <img class="quoa" src="images/quo2.png" alt=""/>
-
-                            <div class="test-left">
-                                <a href="friends/item_friends.php?id=<{$friendItem[$smarty.const.FRIEND_ID]}>"><img
-                                            src="images/<{$friendItem[$smarty.const.FRIEND_IMAGE]}>"
-                                            alt="Friend Image"/></a>
-                            </div>
-                            <div class="test-right">
-                                <h4>
-                                    <a href="friends/item_friends.php?id=<{$friendItem[$smarty.const.FRIEND_ID]}>">我的<{$friendItem[$smarty.const.FRIEND_RELATION]}><{$friendItem[$smarty.const.FRIEND_NAME]}></a>
-                                </h4>
-
-                                <p><{$friendItem[$smarty.const.FRIEND_SIGN]|default:'这个人很拘束，什么都没有留下'}></p>
-                            </div>
-                            <img class="quo" src="images/quo1.png" alt=""/>
-                        </div>
-                    </li>
-                <{/foreach}>
-            </ul>
-        </div>
-    </div>
-</div>
-
 <!--travel 我的足迹-->
 <div class="gallery-section text-center" id="travel">
     <div class="container">
         <h3>世界那么大</h3>
 
-        <div class="strip text-center"><img src="images/port.png" alt=" "/></div>
+        <div class="strip text-center"><img src="images/travel_banner.png" alt=" "/></div>
         <div class="gallery-grids">
             <div class="top-gallery">
                 <{foreach $travelArray as $travelItem}>
@@ -273,7 +217,7 @@ Author URL: http://wangqihang.cn
         <div class="contact-info text-center">
             <h3>CONTACT</h3>
 
-            <div class="strip text-center"><img src="images/con1.png" alt=" "/></div>
+            <div class="strip text-center"><img src="images/contact_banner.png" alt=" "/></div>
         </div>
         <div class="contact-grids">
             <div class="col-md-5 contact-left">
@@ -306,7 +250,7 @@ Author URL: http://wangqihang.cn
 <div class="footer-top"></div>
 <div class="footer">
     <div class="container">
-        <p>Copyright &copy; 2015 Ferrair.<a href="https://github.com/Ferrair/MyPage">Fork me</a></p>
+        <p>Copyright &copy;2016蜀ICP备16000432.<a href="https://github.com/Ferrair/MyPage">Fork me</a></p>
     </div>
 </div>
 </body>

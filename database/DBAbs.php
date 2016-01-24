@@ -6,33 +6,32 @@
  * Date: 2015/12/9
  * Time: 14:58
  */
-require_once '/Applications/MAMP/htdocs/MyPage/config/DBConfig.php';
+require_once 'D:/XAMPP/htdocs/MyPage/config/DBConfig.php';
 
 abstract class DBAbs
 {
     protected static $pdo;
-    protected $tableName;
+    protected static $tableName;
 
     /**
-     * late static binding @see http://php.net/manual/zh/language.oop5.late-static-bindings.php
+     * late static binding @link http://php.net/manual/zh/language.oop5.late-static-bindings.php
      * 后期静态绑定的解析会一直到取得一个完全解析了的静态调用为止。另一方面，如果静态调用使用 parent:: 或者 self:: 将转发调用信息。
      */
-    public static function newInstance($tableName)
+    public static function newInstance()
     {
-        return new static($tableName);
+        if (static::$tableName == null)
+            throw new Exception("子类没有设置需要操作的数据库的表名");
+        return new static(static::$tableName);
     }
 
     protected function __construct($tableName)
     {
-        //Debug
-        //echo "Call " . __METHOD__ . "<br>";
         try {
             if (self::$pdo == null)
                 self::$pdo = new PDO(DATABASE_CONNECTION_CONFIG, DATABASE_USER_NAME, DATABASE_USER_PASSWORD);
         } catch (PDOException $e) {
-            die("Connection Failure " . $e->getMessage());
+            die("Database Connection Failure " . $e->getMessage());
         }
-        $this->tableName = $tableName;
     }
 
     public function __destruct()
@@ -47,11 +46,10 @@ abstract class DBAbs
      */
     public function &fetchData($limit = 6, $order = 'id')
     {
-        $sqlStr = "SELECT * FROM $this->tableName ORDER BY $order LIMIT $limit";
+        $sqlStr = "SELECT * FROM " . static::$tableName . " ORDER BY $order LIMIT $limit";
         //Debug
         //$query = self::$pdo->query($sqlStr);
         //var_dump($query->fetchAll(PDO::FETCH_ASSOC));
-
         $res = self::$pdo->prepare($sqlStr);
         $res->execute();
         $res->setFetchMode(PDO::FETCH_LAZY);
@@ -62,7 +60,7 @@ abstract class DBAbs
 
     public function fetchItemData($id)
     {
-        $sqlStr = "SELECT * FROM $this->tableName WHERE id = $id";
+        $sqlStr = "SELECT * FROM  " . static::$tableName . " WHERE id = $id";
         $statement = self::$pdo->query($sqlStr);
         return $statement->fetchAll(PDO::FETCH_ASSOC)[0];
     }

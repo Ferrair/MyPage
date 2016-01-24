@@ -129,13 +129,13 @@ a.boxclose {
     width: 58px;
     height: 73px;
     display: inline-block;
-    background: url(../images/into.png) no-repeat 0px 0px;
+    background: url(../images/cancel_icon.png) no-repeat 0px 0px;
 }
 
 /*--/header--*/
 /*--banner--*/
 .banner {
-    background: url(../images/banner.jpg) no-repeat 0px 0px;
+    background: url(../images/background.jpg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -541,7 +541,7 @@ span.circles-text {
 /*--//services--*/
 /*--portfolio--*/
 .gallery-section {
-    background: url(../images/port-back.jpg) no-repeat 0px 0px;
+    background: url(../images/travel_background.jpg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1362,7 +1362,7 @@ a.callbacks_nav.callbacks2_nav.next {
 .contact-right form input[type="submit"] {
     color: #2b2b2b;
     font-family: Consolas;
-    background: url(../images/mess.png) no-repeat 81px 14px;
+    background: url(../images/message_icon.png) no-repeat 81px 14px;
     width: 49%;
     border-radius: 4px;
     height: 52px;
@@ -1961,7 +1961,7 @@ a.callbacks_nav.callbacks2_nav.next {
 
 .coment-form input[type="submit"] {
     font-family: Consolas;
-    background: url(../images/mess.png) no-repeat 81px 14px;
+    background: url(../images/message_icon.png) no-repeat 81px 14px;
     width: 49%;
     border-radius: 4px;
     height: 52px;
@@ -1990,7 +1990,7 @@ a.callbacks_nav.callbacks2_nav.next {
     height: 32px;
     border: none;
     text-indent: 100%;
-    background: url("../images/arr.png") no-repeat 0px 0px;
+    background: url("../images/back_to_top.png") no-repeat 0px 0px;
 }
 
 #toTopHover {
@@ -2235,7 +2235,7 @@ a.callbacks_nav.callbacks2_nav.next {
     }
 
     .coment-form input[type="submit"] {
-        background: url(../images/mess.png) no-repeat 69px 14px;
+        background: url(../images/message_icon.png) no-repeat 69px 14px;
         width: 46%;
     }
 
@@ -2619,7 +2619,7 @@ a.callbacks_nav.callbacks2_nav.next {
     }
 
     .contact-right form input[type="submit"] {
-        background: url(../images/mess.png) no-repeat 60px 14px;
+        background: url(../images/message_icon.png) no-repeat 60px 14px;
         width: 46%;
     }
 
@@ -3127,7 +3127,7 @@ a.callbacks_nav.callbacks2_nav.next {
     }
 
     .contact-right form input[type="submit"] {
-        background: url(../images/mess.png) no-repeat 37px 14px;
+        background: url(../images/message_icon.png) no-repeat 37px 14px;
         font-size: 16px;
     }
 
@@ -3302,7 +3302,7 @@ a.callbacks_nav.callbacks2_nav.next {
     .contact-right form input[type="submit"] {
         height: 45px;
         width: 41%;
-        background: url(../images/mess.png) no-repeat 26px 11px;
+        background: url(../images/message_icon.png) no-repeat 26px 11px;
     }
 
     .footer-top {
@@ -3345,7 +3345,7 @@ a.callbacks_nav.callbacks2_nav.next {
     }
 
     .coment-form input[type="submit"] {
-        background: url(../images/mess.png) no-repeat 38px 14px;
+        background: url(../images/message_icon.png) no-repeat 38px 14px;
         width: 34%;
     }
 
@@ -3433,7 +3433,7 @@ a.callbacks_nav.callbacks2_nav.next {
     }
 
     .coment-form input[type="submit"] {
-        background: url(../images/mess.png) no-repeat 23px 10px;
+        background: url(../images/message_icon.png) no-repeat 23px 10px;
         width: 36%;
         height: 45px;
         font-size: 14px;
@@ -3828,7 +3828,7 @@ a.callbacks_nav.callbacks2_nav.next {
 
     .contact-right form input[type="submit"] {
         width: 55%;
-        background: url(../images/mess.png) no-repeat 14px 11px;
+        background: url(../images/message_icon.png) no-repeat 14px 11px;
     }
 
     .footer-top {
@@ -3910,7 +3910,7 @@ a.callbacks_nav.callbacks2_nav.next {
     }
 
     .coment-form input[type="submit"] {
-        background: url(../images/mess.png) no-repeat 79px 12px;
+        background: url(../images/message_icon.png) no-repeat 79px 12px;
         width: 100%;
     }
 
@@ -4149,7 +4149,7 @@ a.callbacks_nav.callbacks2_nav.next {
     .contact-right form input[type="submit"] {
         width: 100%;
         float: left;
-        background: url(../images/mess.png) no-repeat 81px 11px;
+        background: url(../images/message_icon.png) no-repeat 81px 11px;
     }
 
     .contact {
